@@ -73,7 +73,7 @@ for iter = 1:maxit
     end
     disp('AE solved');
     % S3 : compute the gradient
-    w = x(1,:) .* (p(3,:) - p(1,:)) + 2 * params.a * uold;
+    w = x(1,:) .* (p(1,:) - p(3,:)) + 2 * params.a * uold;
     disp('GRADIENT COMPUTED');
 
     % ===========
@@ -175,10 +175,10 @@ if (flag1 == 1) || (flag3 == 1)
         p(:,i) = RK43(params,t(i+1),x(:,i+1),uold(i),p(:,i+1));
 
     end
-    graph = (x(1,:) .* (p(1,:) - p(3,:))) / (2*params.a);
+    graph = (x(1,:) .* (p(3,:) - p(1,:))) / (2*params.a);
     plot(t,graph,'LineWidth',2); grid
     ylim([-0.01,2*params.u2]);
-    legend('u(t)','S(t)(p1(t)-p3(t))/2a');
+    legend('u(t)','S(t)(p3(t)-p1(t))/2a');
 
     figure(2)
     %subplot(2,2,2)
